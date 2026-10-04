@@ -1,0 +1,49 @@
+# Vacuum Cleaner Agent
+
+def vacuum_cleaner_agent(location, status):
+    if status == "Dirty":
+        return "Suck"
+    elif location == "A":
+        return "Right"
+    elif location == "B":
+        return "Left"
+
+
+# Initial state
+location = input("Enter the vacuum cleaner location (A/B): ")
+status_A = input("Enter status of Room A (Clean/Dirty): ")
+status_B = input("Enter status of Room B (Clean/Dirty): ")
+
+print("\nInitial State:")
+print("Room A:", status_A)
+print("Room B:", status_B)
+print("Vacuum Location:", location)
+
+# Agent actions
+while status_A == "Dirty" or status_B == "Dirty":
+
+    if location == "A":
+        action = vacuum_cleaner_agent(location, status_A)
+
+        if action == "Suck":
+            print("Action: Suck - Cleaning Room A")
+            status_A = "Clean"
+        else:
+            print("Action: Move Right")
+            location = "B"
+
+    elif location == "B":
+        action = vacuum_cleaner_agent(location, status_B)
+
+        if action == "Suck":
+            print("Action: Suck - Cleaning Room B")
+            status_B = "Clean"
+        else:
+            print("Action: Move Left")
+            location = "A"
+
+print("\nFinal State:")
+print("Room A:", status_A)
+print("Room B:", status_B)
+print("Vacuum Location:", location)
+print("All rooms are clean!")
